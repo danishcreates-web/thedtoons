@@ -30,10 +30,9 @@
   <section class="trust-strip"><div>✓ Original-first design</div><div>◷ Clear milestones</div><div>✦ Production-ready delivery</div></section>
   <section class="section work-section" id="work">
     <div class="section-heading"><div><p class="kicker">Studio capabilities</p><h2>Built to move.<br>Made to matter.</h2></div><p class="heading-note">A focused look at the kinds of visual worlds TheDToons is built to create.</p></div>
-    <div class="work-grid">
-      <article class="work-card work-one"><div class="work-index">01</div><div class="work-mark">CS</div><div class="work-info"><div><h3>Character Systems</h3><p>Design capability</p></div><button>↗</button></div></article>
-      <article class="work-card work-two"><div class="work-index">02</div><div class="work-mark">AS</div><div class="work-info"><div><h3>Animated Stories</h3><p>Motion capability</p></div><button>↗</button></div></article>
-      <article class="work-card work-three"><div class="work-index">03</div><div class="work-mark">BM</div><div class="work-info"><div><h3>Brand Mascots</h3><p>Identity capability</p></div><button>↗</button></div></article>
+    <div class="work-grid real-gallery">
+      <article class="work-card portfolio-card"><img src="/portfolio-boy-red.png" alt="Cute 3D cartoon boy character in a red jacket designed by TheDToons"><div class="work-index">01</div><div class="work-info"><div><h3>School Explorer</h3><p>3D character development</p></div><button class="view-art" aria-label="View School Explorer artwork">↗</button></div></article>
+      <article class="work-card portfolio-card"><img src="/portfolio-boy-yellow.png" alt="Cute 3D cartoon boy character in a yellow hoodie designed by TheDToons"><div class="work-index">02</div><div class="work-info"><div><h3>Happy Hello</h3><p>3D character development</p></div><button class="view-art" aria-label="View Happy Hello artwork">↗</button></div></article>
     </div>
   </section>
   <section class="section process-section" id="process"><div class="process-heading"><p class="kicker">A clear creative process</p><h2>Professional work.<br><em>Without the mystery.</em></h2></div><div class="process-grid"><article><span>01</span><h3>Discover</h3><p>We align on the audience, tone, deliverables and what success should feel like.</p></article><article><span>02</span><h3>Design</h3><p>Clear visual directions, thoughtful feedback rounds and a character built to be remembered.</p></article><article><span>03</span><h3>Deliver</h3><p>Organised, production-ready files prepared for the formats you actually need.</p></article></div></section>
@@ -59,16 +58,17 @@
       <a class="button primary full disabled" id="prepare" target="_blank">Continue on WhatsApp ↗</a><p class="upload-note">Your brief opens in WhatsApp. Attach the selected artwork there before sending. No file is uploaded on this page.</p>
     </div>
   </section>
-  <section class="cta-section"><div class="cta-symbol">⚡</div><p>Have a character in mind?</p><h2>Let’s make it<br><span>unforgettable.</span></h2><a class="button light-button" href="https://wa.me/?text=Hi%20TheDToons%2C%20I%20want%20to%20discuss%20a%20cartoon%20character%20project." target="_blank">◉ Start on WhatsApp</a></section>
+  <section class="cta-section"><div class="cta-symbol">⚡</div><p>Have a character in mind?</p><h2>Let’s make it<br><span>unforgettable.</span></h2><a class="button light-button" href="https://wa.me/918303001007?text=Hi%20TheDToons%2C%20I%20want%20to%20discuss%20a%20cartoon%20character%20project." target="_blank">◉ Start on WhatsApp</a></section>
   <footer><a class="brand footer-brand" href="#top"><span class="brand-dot">D</span><span>TheD<span class="coral">Toons</span></span></a><p>Original characters. Thoughtful stories.<br>Made by Danish.</p><div class="footer-links"><a href="#work">Work</a><a href="#services">Services</a><a href="#upload">Upload</a></div><div class="copyright">© 2026 TheDToons. All rights reserved.</div></footer>
-</main>
+</main><div class="lightbox" id="lightbox" aria-hidden="true"><button id="closeLightbox" aria-label="Close artwork">×</button><img id="lightboxImage" alt="TheDToons portfolio artwork"></div>
 <script>
 const menu=document.getElementById('menu'),nav=document.getElementById('nav');menu.onclick=()=>{nav.classList.toggle('open');menu.textContent=nav.classList.contains('open')?'✕':'☰'};nav.querySelectorAll('a').forEach(a=>a.onclick=()=>nav.classList.remove('open'));
 const input=document.getElementById('fileInput'),drop=document.getElementById('drop'),name=document.getElementById('fileName'),meta=document.getElementById('fileMeta'),prepare=document.getElementById('prepare'),project=document.getElementById('project'),brief=document.getElementById('brief');let selectedFile=null;
-function updateLink(){const message=`Hi TheDToons, I want to discuss a project.${project.value?'\nProject: '+project.value:''}${brief.value?'\nBrief: '+brief.value:''}${selectedFile?'\nArtwork selected: '+selectedFile.name:''}`;prepare.href='https://wa.me/?text='+encodeURIComponent(message);prepare.classList.toggle('disabled',!project.value&&!brief.value&&!selectedFile)}
+function updateLink(){const message=`Hi TheDToons, I want to discuss a project.${project.value?'\nProject: '+project.value:''}${brief.value?'\nBrief: '+brief.value:''}${selectedFile?'\nArtwork selected: '+selectedFile.name:''}`;prepare.href='https://wa.me/918303001007?text='+encodeURIComponent(message);prepare.classList.toggle('disabled',!project.value&&!brief.value&&!selectedFile)}
 function setFile(file){if(!file)return;selectedFile=file;name.textContent=file.name;meta.textContent=(file.size/1024/1024).toFixed(2)+' MB · Click to replace';drop.classList.add('has-file');updateLink()}
 drop.onclick=()=>input.click();input.onchange=()=>setFile(input.files[0]);drop.ondragover=e=>e.preventDefault();drop.ondrop=e=>{e.preventDefault();setFile(e.dataTransfer.files[0])};prepare.onclick=()=>prepare.textContent='Artwork ready ✓';
 project.oninput=brief.oninput=updateLink;updateLink();
+const lightbox=document.getElementById('lightbox'),lightboxImage=document.getElementById('lightboxImage');document.querySelectorAll('.portfolio-card').forEach(card=>card.onclick=()=>{lightboxImage.src=card.querySelector('img').src;lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false')});document.getElementById('closeLightbox').onclick=e=>{e.stopPropagation();lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true')};lightbox.onclick=()=>lightbox.classList.remove('open');
 </script>
 </body>
 </html>
